@@ -1,11 +1,20 @@
 <template>
-  <div class="snackbar" :class="{ show: snackbarVisible }">
+  <div
+    class="snackbar"
+    :class="{ show: snackbarVisible }"
+    :style="{
+      backgroundColor:
+        $store.state.snackbar.type == 'okey' ? '#005f11' : '#9f0000',
+    }"
+  >
     {{ message }}
+    <i :class="$store.state.snackbar.type == 'okey' ? 'fa fa-check-circle-o' : 'fa fa-exclamation-triangle'" aria-hidden="true"></i>
   </div>
 </template>
 
 <script>
 export default {
+  name: "Snackbar",
   props: {
     message: String,
     duration: {
@@ -31,9 +40,7 @@ export default {
 
       setTimeout(() => {
         this.snackbarVisible = false;
-        if (this.$route.path !== "/cart") {
-          this.$router.push("/products");
-        }
+        this.$store.commit("setSnackbar", { message: "", color: "" });
       }, this.duration);
     },
   },
@@ -47,8 +54,7 @@ export default {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #227427;
-  color: #fff;
+  color: #ffffff;
   padding: 16px;
   border-radius: 4px;
   transition: transform 0.3s ease, opacity 0.3s ease;

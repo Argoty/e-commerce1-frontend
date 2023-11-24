@@ -2,16 +2,19 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import axios from 'axios';
-import Snackbar from './components/Snackbar.vue';
+import store from './store'
+import 'font-awesome/css/font-awesome.css'
+import { formatNumberWithCommas } from './helpers';
 
-axios.defaults.baseURL = "http://localhost:8000/"
+Vue.prototype.formatNumberWithCommas = formatNumberWithCommas;
 
+axios.defaults.baseURL = "https://ec1-vuexpress.vercel.app/"
 
 Vue.config.productionTip = false
-Vue.component('Snackbar', Snackbar);
 
 new Vue({
   router,
   axios,
+  store,
   render: h => h(App)
 }).$mount('#app')
