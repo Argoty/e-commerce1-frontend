@@ -16,7 +16,7 @@ export default new Vuex.Store({
     token: '',
     currentUser: {},
 
-    title: "E-commerce",
+    title: "J y S Distri",
   },
   getters: {
   },

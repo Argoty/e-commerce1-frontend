@@ -1,7 +1,7 @@
 <template>
   <div id="nav-bar">
-    <router-link to="/products" id="products-link">
-      <h1 style="font-size: 150%">{{ $store.state.title }}</h1>
+    <router-link to="/products" id="products-link" style="margin: 0;">
+      <img src="../assets/logo.png" alt="J y S Logo" />
     </router-link>
     <div id="button-container" :class="{ active: mobileMenuOpen }">
       <router-link to="/admin" class="button-link" v-if="$store.state.isAdmin">

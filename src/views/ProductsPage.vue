@@ -19,7 +19,9 @@
       </a>
     </div>
 
-    <Searcher @search="searchProducts" style="margin-top: 60px" />
+    <Banner />
+
+    <Searcher @search="searchProducts"/>
     <ProductsGrid :products="filteredProducts" />
     <h3 v-if="noProduct" style="text-align: center">
       Lo siento, no hay productos :(
@@ -31,6 +33,8 @@
 <script>
 import Searcher from "@/components/Searcher.vue";
 import ProductsGrid from "@/components/ProductsGrid.vue";
+import Banner from "@/components/Banner.vue";
+
 import axios from "axios";
 
 export default {
@@ -38,6 +42,7 @@ export default {
   components: {
     ProductsGrid,
     Searcher,
+    Banner
   },
   data() {
     return {
@@ -142,5 +147,12 @@ export default {
 
 .tabs a:active {
   opacity: 0.5;
+}
+@media screen and (max-width: 768px) {
+  .tabs a {
+    font-size: 16px;
+    padding: 10px 5px;
+  }
+  
 }
 </style>
